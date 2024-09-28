@@ -1,3 +1,33 @@
-<h1 class="text-3xl font-bold underline">
-  Hello world!
-</h1>
+<div class="h-screen flex flex-col">
+    <mat-toolbar color="primary" class="h-16 flex justify-between">
+        <button mat-icon-button (click)="sidenav.toggle()" class="text-white">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <span>{{displayTitle}}</span>
+        <div>
+            <button mat-icon-button class="text-white">
+                <mat-icon>notifications</mat-icon>
+            </button>
+            <button mat-icon-button class="text-white">
+                <mat-icon>account_circle</mat-icon>
+            </button>
+        </div>
+    </mat-toolbar>
+    <mat-sidenav-container class="flex-1">
+        <!-- Sidebar / Sidenav -->
+        <mat-sidenav #sidenav opened mode="side" class="bg-gray-800 text-white">
+            <mat-nav-list>
+                @for (item of routes; track $index) {
+                    <a mat-list-item href={{item.path}} class="text-white flex items-center">
+                        <mat-icon>{{item.data ? item.data['icon'] : "no icon"}}</mat-icon>
+                        <span class="ml-4">{{item.data ? item.data['title'] : "no title"}}</span>
+                    </a>
+                }
+            </mat-nav-list>
+        </mat-sidenav>
+        <!-- Main Content Area -->
+        <mat-sidenav-content>
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>
