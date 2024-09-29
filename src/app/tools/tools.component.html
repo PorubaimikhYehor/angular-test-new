@@ -1,0 +1,38 @@
+<div class="p-4">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title-group>
+                <mat-card-title>Send Event</mat-card-title>
+                <!-- <mat-card-subtitle>Send Event subtitle</mat-card-subtitle> -->
+            </mat-card-title-group>
+        </mat-card-header>
+        <mat-card-content>
+            <form class="example-form" [formGroup]="sendEventForm">
+                <mat-form-field class="w-full">
+                    <mat-label>Model</mat-label>
+                    <input type="text" placeholder="Pick one" aria-label="Model" matInput [matAutocomplete]="auto" formControlName="model">
+                    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                        @for (option of filteredOptions | async; track option) {
+                        <mat-option [value]="option">{{option}}</mat-option>
+                        }
+                    </mat-autocomplete>
+                </mat-form-field>
+                <mat-form-field class="w-full">
+                    <mat-label>Event</mat-label>
+                    <input type="text" matInput placeholder="Pick one" aria-label="Event">
+                </mat-form-field>
+                <mat-form-field class="w-full">
+                    <mat-label>Event result code</mat-label>
+                    <input type="text" matInput placeholder="Pick one" aria-label="Result">
+                </mat-form-field>
+                <mat-form-field class="w-full">
+                    <mat-label>Event outputs (JSON format)</mat-label>
+                    <textarea matInput></textarea>
+                </mat-form-field>
+            </form>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-button>Send event</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

@@ -1,5 +1,5 @@
 <div class="h-screen flex flex-col">
-    <mat-toolbar color="primary" class="h-16 flex justify-between">
+    <mat-toolbar color="$accent" class="h-16 flex justify-between">
         <button mat-icon-button (click)="sidenav.toggle()" class="text-white">
             <mat-icon>menu</mat-icon>
         </button>
@@ -15,7 +15,7 @@
     </mat-toolbar>
     <mat-sidenav-container class="flex-1">
         <!-- Sidebar / Sidenav -->
-        <mat-sidenav #sidenav opened mode="side" class="bg-gray-800 text-white">
+        <mat-sidenav #sidenav opened mode="side" class="text-white">
             <mat-nav-list>
                 @for (item of routes; track $index) {
                     <a mat-list-item href={{item.path}} class="text-white flex items-center">
@@ -26,7 +26,7 @@
             </mat-nav-list>
         </mat-sidenav>
         <!-- Main Content Area -->
-        <mat-sidenav-content>
+        <mat-sidenav-content class="">
             <router-outlet></router-outlet>
         </mat-sidenav-content>
     </mat-sidenav-container>
